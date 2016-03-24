@@ -5,5 +5,16 @@ FROM daocloud.io/php:5.6-apache
 # pdo_mysql 为 PHP 连接 MySQL 扩展
 RUN docker-php-ext-install pdo_mysql
 
+# 安装必备软件
+sudo apt-get -y wget curl vim 
+
+# 安装composer
+RUN curl -sS https://getcomposer.org/installer \
+        | php -- --install-dir=/usr/local/bin --filename=composer
+        
+RUN  chmod +x  /usr/local/bin/composer  
+
+RUN  composer global require "phpunit/phpunit=~4.0"  
+
 # /var/www/html/ 为 Apache 目录
 COPY . /var/www/html/
