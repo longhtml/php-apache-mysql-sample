@@ -6,7 +6,7 @@ FROM daocloud.io/php:5.6-apache
 RUN docker-php-ext-install pdo_mysql
 
 # 安装必备软件
-apt-get -y wget curl vim git
+RUN sudo apt-get -y wget curl vim git
 
 # 安装composer
 RUN curl -sS https://getcomposer.org/installer \
